@@ -139,7 +139,6 @@ function showDetail(buttonEl, rowEl, item) {
             detailContentEl.appendChild(closeBtnEl);
             detailEl.style.height = detailContentEl.offsetHeight + 'px';
             addClass(rowEl, 'active');
-            scrollTo(detailEl);
         }
     }
 }

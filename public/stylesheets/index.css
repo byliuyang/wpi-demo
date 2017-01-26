@@ -267,10 +267,14 @@ body > .content > h1:after {
 	transform : translateY(-50%);
 }
 
+.buttons .row.active + .detail{
+	opacity: 1;
+}
+
 .detail {
 	height: 0;
+	opacity: 0;
 	overflow: hidden;
-	/*box-sizing: border-box;*/
 	transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
