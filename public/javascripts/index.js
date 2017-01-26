@@ -101,6 +101,9 @@ function createButtons(items) {
 
             var detailEl = document.createElement("div");
             detailEl.className = 'detail';
+            var detailContentEl = document.createElement("div");
+            detailContentEl.className = 'content';
+            detailEl.appendChild(detailContentEl);
             rowWrapper.appendChild(detailEl);
             buttonsEl.appendChild(rowWrapper);
         }
@@ -121,17 +124,22 @@ function showDetail(buttonEl, rowEl, item) {
             var allButtons = row.querySelectorAll("li");
             allButtons.forEach(function(button) {
                 removeClass(button, 'active');
+                if(row.nextSibling != rowEl.nextSibling)
+                    closeDetailPanel(rowEl, row.nextSibling);
             });
         });
 
         addClass(buttonEl, 'active');
 
         if (item.detail) {
-            var detailEl = rowEl.nextSibling;
-            detailEl.innerHTML = item.detail;
-            var closeBtnEl = createCloseBtn(rowEl, buttonEl);
-            detailEl.appendChild(closeBtnEl);
+            var detailEl = rowEl.nextSibling,
+                detailContentEl = detailEl.querySelector('.content');
+            detailContentEl.innerHTML = item.detail;
+            var closeBtnEl = createCloseBtn(rowEl, buttonEl, detailEl);
+            detailContentEl.appendChild(closeBtnEl);
+            detailEl.style.height = detailContentEl.offsetHeight + 'px';
             addClass(rowEl, 'active');
+            scrollTo(detailEl);
         }
     }
 }
@@ -155,14 +163,19 @@ function removeClass(dom, className) {
     dom.className = dom.className.replace(new RegExp('\\s?' + className, 'g'), '')
 }
 
-function createCloseBtn(rowEl, buttonEl) {
+function createCloseBtn(rowEl, buttonEl, detailEl) {
     var btn = document.createElement("div");
     btn.className = 'btn close';
     btn.innerHTML = '<span>close</span><i class="material-icons">close</i>';
 
     btn.addEventListener('click', function(){
-        removeClass(rowEl, 'active');
+        closeDetailPanel(rowEl, detailEl);
         removeClass(buttonEl, 'active');
     });
     return btn;
+}
+
+function closeDetailPanel(rowEl, detailEl) {
+    removeClass(rowEl, 'active');
+    detailEl.style.height = 0;
 }

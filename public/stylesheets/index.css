@@ -43,7 +43,7 @@
 		overflow              : hidden;
 	}
 
-	.content {
+	body > .content {
 		width : 70%;
 	}
 
@@ -80,7 +80,7 @@
 		display: none;
 	}
 
-	.content {
+	body > .content {
 		width : 90%;
 	}
 
@@ -187,12 +187,12 @@ nav .row .btn {
 	color: white;
 }
 
-.content {
+body > .content {
 	margin-left  : auto;
 	margin-right : auto;
 }
 
-.content > h1 {
+body > .content > h1 {
 	font-size: 2.8em;
 	text-align: center;
 	font-family: 'Lato', sans-serif;
@@ -201,7 +201,7 @@ nav .row .btn {
 	margin: 40px 0;
 }
 
-.content > h1:after {
+body > .content > h1:after {
 	position: absolute;
 	bottom: 0;
 	content: "";
@@ -267,31 +267,32 @@ nav .row .btn {
 	transform : translateY(-50%);
 }
 
-.buttons .row.active + .detail{
-	padding       : 20px 0;
-	border-bottom : 1px solid lightgray;
-	height: auto;
-}
-
 .detail {
 	height: 0;
-	box-sizing: border-box;
 	overflow: hidden;
+	/*box-sizing: border-box;*/
+	transition: all 600ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.detail > h1 {
+.detail > .content {
+	padding       : 20px 0;
+	border-bottom : 1px solid lightgray;
+	box-sizing: border-box;
+}
+
+.detail > .content > h1 {
 	color       : rgb(172, 42, 56);
 	font-weight : 500;
 	font-size   : 2em;
 	margin      : 10px 0;
 }
 
-.detail > p {
+.detail > .content > p {
 	font-size   : 1.2em;
 	line-height : 1.5;
 }
 
-.detail > ul {
+.detail > .content > ul {
 	list-style  : disc;
 	font-size   : 1.2em;
 	line-height : 1.5;
