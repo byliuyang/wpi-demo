@@ -1,0 +1,327 @@
+@media (min-width : 1024px) {
+	nav .row {
+		width : 70%;
+	}
+
+	nav .logo .mobile {
+		display: none;
+	}
+
+	nav .logo .desktop {
+		display: inline-block;
+	}
+
+	nav .btn span {
+		display: inline-block;
+	}
+
+	.breadcrumb .row {
+		width : 70%;
+	}
+
+	.breadcrumb ul {
+		flex-direction: row;
+	}
+
+	.breadcrumb ul li:not(:first-child):before {
+		margin-left           : 6px;
+		margin-right          : 6px;
+		color                 : #FFD56B;
+		content               : "keyboard_arrow_right";
+		font-family           : 'Material Icons', sans-serif;
+		text-rendering        : optimizeLegibility;
+		font-feature-settings : "liga" 1;
+		font-style            : normal;
+		text-transform        : none;
+		line-height           : 1;
+		font-size             : 22px;
+		width                 : 18px;
+		margin-top            : -4px;
+		height                : 18px;
+		display               : inline-block;
+		vertical-align        : top;
+		overflow              : hidden;
+	}
+
+	.content {
+		width : 70%;
+	}
+
+	.buttons > li {
+		margin : 0 0 2% 0;
+	}
+
+	.buttons .row > li {
+		width   : 23.5%;
+		padding : 18px;
+		height  : 120px;
+	}
+
+	.buttons .row > li:not(:last-child) {
+		margin-right : 2%;
+	}
+}
+
+@media (max-width : 1023px) {
+
+	nav .row {
+		width : 90%;
+	}
+
+	nav .logo .mobile {
+		display: inline-block;
+	}
+
+	nav .logo .desktop {
+		display: none;
+	}
+
+	nav .btn span {
+		display: none;
+	}
+
+	.content {
+		width : 90%;
+	}
+
+	.breadcrumb ul {
+		flex-direction: column;
+	}
+
+	.breadcrumb .row {
+		width: 90%;
+	}
+
+	.breadcrumb .row ul li:not(:last-child) {
+		margin-bottom: 8px;
+	}
+
+	.row {
+		margin : 0;
+	}
+
+	.row > li {
+		width         : 100%;
+		padding       : 20px;
+		height        : 120px;
+		margin-bottom : 4%;
+	}
+}
+
+html, body {
+	font-family : 'Roboto', sans-serif;
+	padding     : 0;
+	margin      : 0;
+}
+
+nav {
+	background-color : rgb(172, 42, 56);
+	padding          : 18px 0;
+	border-bottom    : 3px solid #751019;
+}
+
+nav .logo {
+	flex   : 1;
+	text-align: center;
+}
+
+nav .logo .desktop {
+	height: 35px;
+}
+
+nav .logo .mobile {
+	height: 22px;
+}
+
+nav .row {
+	display        : flex;
+	flex-direction : row;
+	margin-left    : auto;
+	margin-right   : auto;
+	padding        : 0;
+	align-items    : center;
+}
+
+nav .row .btn {
+	color : white;
+}
+
+.breadcrumb {
+	background-color : #352C3F;
+	padding          : 8px 0;
+}
+
+.breadcrumb .row {
+	margin-left  : auto;
+	margin-right : auto;
+}
+
+.breadcrumb ul {
+	display        : flex;
+	list-style     : none;
+	margin         : 0;
+	padding        : 0;
+}
+
+.breadcrumb ul li {
+	text-transform : uppercase;
+	font-size      : 12px;
+	font-weight    : bold;
+}
+
+.breadcrumb ul li:not(:last-child) a {
+	color : #9B96A3;
+}
+
+.breadcrumb ul li:last-child a {
+	color : white;
+}
+
+.page.title {
+	background-color : rgb(51, 51, 51);
+	text-align: center;
+	padding: 14px 0;
+	text-transform: uppercase;
+	font-size: 26px;
+	font-weight: bold;
+	color: white;
+}
+
+.content {
+	margin-left  : auto;
+	margin-right : auto;
+}
+
+.content > h1 {
+	font-size: 2.8em;
+	text-align: center;
+	font-family: 'Lato', sans-serif;
+	position: relative;
+	padding-bottom: 40px;
+	margin: 40px 0;
+}
+
+.content > h1:after {
+	position: absolute;
+	bottom: 0;
+	content: "";
+	width: 200px;
+	height: 1px;
+	left: 50%;
+	margin-left: -100px;
+	border-bottom: 1px solid gray;
+}
+
+.notification {
+	border: 1px solid gray;
+	padding: 20px;
+	line-height: 1.8;
+}
+
+.notification > .highlight{
+	font-weight: bold;
+	color : rgb(172, 42, 56);
+}
+
+.notification a {
+	color : rgb(172, 42, 56);
+	text-decoration: underline;
+}
+
+.buttons {
+	list-style : none;
+	padding    : 0;
+	margin-top: 40px;
+}
+
+.buttons .row {
+	padding   : 0;
+	font-size : 0;
+}
+
+.buttons .row > li {
+	color          : white;
+	font-size      : 20px;
+	box-sizing     : border-box;
+	text-align     : center;
+	font-weight    : 900;
+	vertical-align : top;
+	background     : black;
+	text-transform : uppercase;
+	display        : inline-block;
+	transition     : background 100ms ease-in-out;
+}
+
+.buttons .row > li.active {
+	background-color : rgb(172, 42, 56);
+}
+
+.buttons .row > li:hover {
+	background-color : rgb(172, 42, 56);
+	cursor           : pointer;
+}
+
+.buttons .row > li > div {
+	position  : relative;
+	top       : 50%;
+	transform : translateY(-50%);
+}
+
+.buttons .row.active + .detail{
+	padding       : 20px 0;
+	border-bottom : 1px solid lightgray;
+	height: auto;
+}
+
+.detail {
+	height: 0;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.detail > h1 {
+	color       : rgb(172, 42, 56);
+	font-weight : 500;
+	font-size   : 2em;
+	margin      : 10px 0;
+}
+
+.detail > p {
+	font-size   : 1.2em;
+	line-height : 1.5;
+}
+
+.detail > ul {
+	list-style  : disc;
+	font-size   : 1.2em;
+	line-height : 1.5;
+}
+
+.btn.close {
+	margin-left      : auto;
+	margin-right     : 0;
+	text-align       : center;
+	padding          : 4px 0 3px 3px;
+	width            : 86px;
+	background-color : rgb(172, 42, 56);
+	color            : white;
+}
+
+.btn.close:hover {
+	opacity : 0.8;
+	cursor  : pointer;
+}
+
+.btn > span {
+	text-transform : uppercase;
+	font-size      : 16px;
+	font-weight    : bold;
+	padding-top    : 2px;
+	display        : inline-block;
+	vertical-align : middle;
+}
+
+.btn > .material-icons {
+	display        : inline-block;
+	vertical-align : middle;
+}
