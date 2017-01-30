@@ -1,6 +1,10 @@
 /**
  * Created by harryliu on 1/25/17.
  */
+var detailShow = false,
+    detailPanel,
+    MOBILE_MAX_WIDTH = 1023;
+
 window.onload = function () {
     var items = [
         {
@@ -84,7 +88,35 @@ window.onload = function () {
 
     // var buttons = document.querySelectorAll(".buttons>li>ul>li");
     createButtons(items);
+
+    window.onresize = resizeDetailPanel;
 };
+
+function isMobile() {
+    return document.documentElement.offsetWidth < MOBILE_MAX_WIDTH;
+}
+
+function detailPanelHeight() {
+    return isMobile() ? document.documentElement.clientHeight : detailPanel.querySelector('.content').offsetHeight;
+}
+
+function restoreBodyOverflow() {
+    document.body.style.overflow = 'auto';
+}
+
+function hideBodyOverflow() {
+    document.body.style.overflow = 'hidden';
+}
+
+function resizeDetailPanel() {
+    if(detailShow) {
+        detailPanel.style.height = detailPanelHeight() + "px";
+        if(isMobile())
+            document.body.style.overflow = 'hidden';
+        else
+            restoreBodyOverflow();
+    }
+}
 
 function createButtons(items) {
     var rowEl,
@@ -137,8 +169,10 @@ function showDetail(buttonEl, rowEl, item) {
             detailContentEl.innerHTML = item.detail;
             var closeBtnEl = createCloseBtn(rowEl, buttonEl, detailEl);
             detailContentEl.appendChild(closeBtnEl);
-            detailEl.style.height = detailContentEl.offsetHeight + 'px';
+            detailShow  = true;
+            detailPanel= detailEl;
             addClass(rowEl, 'active');
+            resizeDetailPanel();
         }
     }
 }
@@ -177,4 +211,6 @@ function createCloseBtn(rowEl, buttonEl, detailEl) {
 function closeDetailPanel(rowEl, detailEl) {
     removeClass(rowEl, 'active');
     detailEl.style.height = 0;
+    detailShow = false;
+    restoreBodyOverflow();
 }
